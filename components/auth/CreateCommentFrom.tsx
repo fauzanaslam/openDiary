@@ -2,6 +2,8 @@
 
 import { createCommentAction } from "@/actions/createCommentAction";
 import React, { RefObject, useRef } from "react";
+import { useAuth } from "@clerk/nextjs";
+import Link from "next/link";
 
 type ParamsProps = {
   diary_id: number;
@@ -9,6 +11,20 @@ type ParamsProps = {
 
 const CreateCommentFrom = ({ diary_id }: ParamsProps) => {
   const formRef: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
+
+  const { isSignedIn } = useAuth();
+
+  if (!isSignedIn)
+    return (
+      <div className="flex justify-center">
+        <Link
+          href="/sign-in"
+          className="text-center mb-10 py-2 px-5 bg-primary max-w-sm text-white rounded inline-block hover:bg-secondary"
+        >
+          login untuk berkomentar
+        </Link>
+      </div>
+    );
 
   const resetForm = (): void => {
     setTimeout(() => {
