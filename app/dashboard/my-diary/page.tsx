@@ -3,6 +3,7 @@ import React from "react";
 import PostContent from "../../../components/global/(diary)/PostContent";
 import { supabase } from "@/utils/supabase";
 import { getUserData } from "@/utils/clerk";
+import Buttondelete from "../../../components/Buttondelete";
 
 const page = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -17,16 +18,22 @@ const page = async (): Promise<React.ReactElement> => {
 
   return (
     <Wrapper title="MY DIARY">
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="gap-4">
         {data.map((diary) => {
           return (
-            <PostContent
+            <div
               key={diary.id}
-              avatar={diary.avatar}
-              content={diary.content}
-              email={diary.email}
-              username={diary.username}
-            />
+              className="flex justify-between items-center gap-4"
+            >
+              <PostContent
+                diary_id={diary.id}
+                avatar={diary.avatar}
+                content={diary.content}
+                email={diary.email}
+                username={diary.username}
+              />
+              <Buttondelete diary_id={diary.id} />
+            </div>
           );
         })}
       </div>

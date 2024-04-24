@@ -9,9 +9,8 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
     .order("created_at", { ascending: false });
 
   if (error) return <p>please reload the page</p>;
-  console.log("🚀 ~ CardDiaries ~ data,:", data);
   return (
-    <div className="grid md:grid-cols-3 gap-4">
+    <div className="">
       {data.map((diary) => {
         return (
           <PostContent

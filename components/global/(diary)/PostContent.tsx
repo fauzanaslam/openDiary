@@ -11,22 +11,26 @@ const PostContent = ({
   email,
 }: IDiary): React.ReactElement => {
   return (
-    <Link
-      href={`/diary/${diary_id}`}
-      className="card card-body card-bordered shadow-lg bg-base-300 cursor-pointer hover:bg-secondary duration-300 ease-in-out hover:scale-105 h-72"
-    >
-      <div className="flex items-center gap-4">
-        <Image
-          src={avatar as string}
-          alt={avatar as string}
-          width={50}
-          height={50}
-          className="rounded-full bg-primary p-2"
-        />
-        <p className="font-semibold text-md">{username || email}</p>
-      </div>
-      <p className="overflow-y-auto text-sm">{content}</p>
-    </Link>
+    <div className="flex justify-between items-center flex-1">
+      <Link
+        href={`/diary/${diary_id}`}
+        className="flex flex-1 gap-2 p-5 cursor-pointer duration-300 ease-in-out hover:bg-gray-800 transition-all border-b-2 border-gray-700"
+      >
+        <div className="items-center gap-4">
+          <Image
+            src={avatar as string}
+            alt={avatar as string}
+            width={45}
+            height={45}
+            className="rounded-full bg-primary p-2"
+          />
+        </div>
+        <div>
+          <p className="font-semibold text-md">{username || email}</p>
+          <p className="text-sm">{content}</p>
+        </div>
+      </Link>
+    </div>
   );
 };
 
