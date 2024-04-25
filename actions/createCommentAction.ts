@@ -9,10 +9,20 @@ export const createCommentAction = async (FormData: FormData) => {
   const content = FormData.get("content") as string;
   const diary_id = FormData.get("diary_id");
   const comment_id = randomUUID();
+  const created_at = new Date().toLocaleDateString();
 
   const { avatar, email, username } = await getUserData();
 
-  const data: IComments = { comment_id, avatar, email, username, content };
+  if (!content || !username || !email) return;
+
+  const data: IComments = {
+    comment_id,
+    avatar,
+    email,
+    username,
+    content,
+    created_at,
+  };
 
   const getComment = await supabase
     .from("diary")

@@ -11,6 +11,7 @@ const CreateDiaryform = (): React.ReactElement => {
         placeholder="isi diary kamu disini"
         className="h-52 p-4 text-lg border border-primary textarea"
         name="content"
+        required
       />
       <button className="btn btn-primary" type="submit">
         Create now

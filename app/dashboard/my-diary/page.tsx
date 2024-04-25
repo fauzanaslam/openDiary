@@ -15,12 +15,12 @@ const page = async (): Promise<React.ReactElement> => {
     .eq("email", email);
 
   if (data?.length == 0)
-    return <h1 className="flex justify-center">BELUM ADA DIARY</h1>;
+    return <h1 className="flex justify-center">Diary not found</h1>;
 
   if (error) return <p>please reload the page...</p>;
 
   return (
-    <Wrapper title="MY DIARY">
+    <Wrapper title="My Diary">
       <div className="gap-4">
         {data.map((diary) => {
           return (

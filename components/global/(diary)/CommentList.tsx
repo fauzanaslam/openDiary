@@ -36,9 +36,12 @@ const CommentList = async ({ diary_id }: ParamsProps) => {
                   className="rounded-full bg-primary"
                 />
                 <div>
-                  <p className="font-bold mb-2">
-                    {comment.username || comment.email}
-                  </p>
+                  <div className="flex gap-1 items-center mb-2">
+                    <p className="font-bold text-lg">
+                      {comment.username || comment.email}
+                    </p>
+                    <p>- {comment.created_at}</p>
+                  </div>
                   <p>{comment.content}</p>
                 </div>
               </div>

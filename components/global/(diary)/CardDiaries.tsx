@@ -10,17 +10,19 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
 
   if (error) return <p>please reload the page</p>;
   return (
-    <div className="">
+    <div>
       {data.map((diary) => {
         return (
-          <PostContent
-            key={diary.id}
-            diary_id={diary.id}
-            avatar={diary.avatar}
-            content={diary.content}
-            email={diary.email}
-            username={diary.username}
-          />
+          <div key={diary.id}>
+            <PostContent
+              key={diary.id}
+              diary_id={diary.id}
+              avatar={diary.avatar}
+              content={diary.content}
+              email={diary.email}
+              username={diary.username}
+            />
+          </div>
         );
       })}
     </div>
