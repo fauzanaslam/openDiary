@@ -62,15 +62,21 @@ const Navbar = (): React.ReactElement => {
 
           {isSignedIn ? (
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">
+              <ul className="menu menu-horizontal gap-2">
                 <li>
-                  <Link href="/dashboard">Create Diary</Link>
+                  <Link href="/dashboard" className="font-bold">
+                    Create Diary
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/my-diary">My Diary</Link>
+                  <Link href="/dashboard/my-diary" className="font-bold">
+                    My Diary
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/my-comments">My Comments</Link>
+                  <Link href="/dashboard/my-comments" className="font-bold">
+                    My Comments
+                  </Link>
                 </li>
               </ul>
             </div>
