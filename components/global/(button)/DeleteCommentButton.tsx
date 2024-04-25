@@ -2,6 +2,7 @@
 
 import { deleteCommentAction } from "@/actions/deleteCommentAction";
 import React from "react";
+import { useAuth } from "@clerk/nextjs";
 
 type ParamsProps = {
   diary_id: number;
@@ -9,7 +10,9 @@ type ParamsProps = {
 };
 
 const DeleteCommentButton = ({ diary_id, comment_id }: ParamsProps) => {
-  return (
+  const { isSignedIn } = useAuth();
+
+  return isSignedIn ? (
     <div>
       <label
         htmlFor="my_modal_6"
@@ -49,7 +52,7 @@ const DeleteCommentButton = ({ diary_id, comment_id }: ParamsProps) => {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default DeleteCommentButton;

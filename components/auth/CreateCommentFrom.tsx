@@ -23,11 +23,11 @@ const CreateCommentFrom = ({ diary_id }: ParamsProps) => {
   return (
     <form
       action={createCommentAction}
-      className="flex flex-col gap-4 mx-auto w-full"
+      className="flex flex-col gap-4 mx-auto w-full mb-5"
       onSubmit={resetForm}
     >
       <textarea
-        placeholder="tuliskan komentar disini>>"
+        placeholder="Comment here>>"
         className="h-52 p-4 text-lg border border-primary textarea"
         name="content"
       />
@@ -39,7 +39,7 @@ const CreateCommentFrom = ({ diary_id }: ParamsProps) => {
               className="btn btn-primary max-w-sm mx-auto w-full"
               type="submit"
             >
-              Login untuk berkomentar
+              Login for comment
             </button>
           </div>
         </Link>

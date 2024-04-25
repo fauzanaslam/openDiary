@@ -6,7 +6,7 @@ export const revalidate = 0;
 
 export default function page(): React.ReactElement {
   return (
-    <Wrapper title="Beranda">
+    <Wrapper title="Home">
       <CardDiaries />
     </Wrapper>
   );
