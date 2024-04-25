@@ -3,7 +3,7 @@ import React from "react";
 import PostContent from "../../../components/global/(diary)/PostContent";
 import { supabase } from "@/utils/supabase";
 import { getUserData } from "@/utils/clerk";
-import Buttondelete from "../../../components/Buttondelete";
+import Buttondelete from "../../../components/global/(button)/Buttondelete";
 
 const page = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -13,6 +13,9 @@ const page = async (): Promise<React.ReactElement> => {
     .select()
     .order("created_at", { ascending: false })
     .eq("email", email);
+
+  if (data?.length == 0)
+    return <h1 className="flex justify-center">BELUM ADA DIARY</h1>;
 
   if (error) return <p>please reload the page...</p>;
 
