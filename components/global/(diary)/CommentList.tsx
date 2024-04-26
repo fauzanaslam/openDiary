@@ -29,7 +29,7 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
             key={comment.comment_id}
             className="ml-4 card card-body card-bordered p-4 bg-base-200"
           >
-            <div className="flex justify-between gap-4">
+            <div className="md:flex justify-between gap-4">
               <div className="flex gap-4">
                 <div>
                   <Image
@@ -41,8 +41,8 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
                   />
                 </div>
                 <div>
-                  <div className="flex gap-1 items-center mb-2">
-                    <p className="font-bold text-lg">
+                  <div className="md:flex gap-1 items-center mb-2">
+                    <p className="font-bold md:text-lg">
                       {comment.username || comment.email}
                     </p>
                     <p>- {comment.created_at}</p>
@@ -50,9 +50,11 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
                   <p>{comment.content}</p>
                 </div>
               </div>
-              {user == email || user == username || comment.email == email ? (
-                <DeleteCommentButton diary_id={diary_id} comment_id={index} />
-              ) : null}
+              <div className="flex justify-end">
+                {user == email || user == username || comment.email == email ? (
+                  <DeleteCommentButton diary_id={diary_id} comment_id={index} />
+                ) : null}
+              </div>
             </div>
           </div>
         );

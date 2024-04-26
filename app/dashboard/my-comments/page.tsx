@@ -36,16 +36,18 @@ const page = async () => {
               key={comment.comment_id}
               href={`/diary/${comment.comment_id}`}
             >
-              <div className="ml-4 card card-body card-bordered p-4 bg-base-300 hover:bg-base-200 ease-in-out duration-300">
+              <div className="mx-4 card card-body card-bordered bg-base-300 hover:bg-base-200 ease-in-out duration-300">
                 <div className="flex justify-between gap-4">
                   <div className="flex gap-4">
-                    <Image
-                      src={comment.avatar as string}
-                      alt={comment.avatar as string}
-                      width={50}
-                      height={50}
-                      className="rounded-full bg-primary"
-                    />
+                    <div className="items-center gap-4">
+                      <Image
+                        src={comment.avatar as string}
+                        alt={comment.avatar as string}
+                        width={45}
+                        height={45}
+                        className="rounded-full bg-primary p-2"
+                      />
+                    </div>
                     <div>
                       <p className="font-bold mb-2">
                         {comment.username || comment.email}

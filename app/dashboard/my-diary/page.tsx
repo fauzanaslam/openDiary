@@ -26,7 +26,7 @@ const page = async (): Promise<React.ReactElement> => {
           return (
             <div
               key={diary.id}
-              className="flex justify-between items-center gap-4"
+              className="flex justify-between items-center md:gap-4"
             >
               <PostContent
                 diary_id={diary.id}
