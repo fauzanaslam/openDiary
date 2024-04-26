@@ -5,13 +5,15 @@ const Footer = () => {
   return (
     <div className="flex justify-center py-5 bg-slate-800">
       <div className="md:flex gap-1">
-        @ OpenDiary 2024 |
-        <Link href="https://www.instagram.com/fauzanaslam/?next=%2F">
-          <p className="hover:text-primary ease-in-out duration-100">
-            FauzanAslam
-          </p>
-        </Link>
-        . All rights reversed
+        <p className="text-center">@ OpenDiary 2024 |</p>
+        <div className="flex">
+          <Link href="https://www.instagram.com/fauzanaslam/?next=%2F">
+            <p className="hover:text-primary ease-in-out duration-100">
+              FauzanAslam
+            </p>
+          </Link>
+          . All rights reversed
+        </div>
       </div>
     </div>
   );
