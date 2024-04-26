@@ -40,7 +40,7 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
                     className="rounded-full bg-primary"
                   />
                 </div>
-                <div className="max-w-[160px] md:max-w-[500px]">
+                <div className="max-w-[160px] md:max-w-[550px]">
                   <div className="md:flex gap-1 items-center mb-2">
                     <p className="font-bold md:text-lg">
                       {comment.username || comment.email}
