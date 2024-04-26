@@ -13,6 +13,7 @@ const Footer = () => {
             </p>
           </Link>
           . All rights reversed
+          <p>.</p>
         </div>
       </div>
     </div>

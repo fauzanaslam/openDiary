@@ -48,7 +48,7 @@ const page = async () => {
                         className="rounded-full bg-primary p-2"
                       />
                     </div>
-                    <div>
+                    <div className="max-w-[150px] md:max-w-[600px]">
                       <p className="font-bold mb-2">
                         {comment.username || comment.email}
                       </p>

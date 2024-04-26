@@ -12,6 +12,7 @@ const CreateDiaryform = (): React.ReactElement => {
         className="h-52 p-4 text-lg border border-primary textarea"
         name="content"
         required
+        maxLength={50}
       />
       <button className="btn btn-primary" type="submit">
         Create now
