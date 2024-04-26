@@ -6,10 +6,9 @@ import NavbarButton from "./NavbarButton";
 import { useUser } from "@clerk/nextjs";
 
 const Navbar = (): React.ReactElement => {
-  const { isLoaded, isSignedIn } = useUser();
-  if (!isLoaded) return <p>please wait..</p>;
+  const { isSignedIn } = useUser();
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center shadow-lg mb-12">
       <div className="container">
         <div className="navbar bg-base-100 flex justify-center">
           {isSignedIn ? (
@@ -50,12 +49,12 @@ const Navbar = (): React.ReactElement => {
                   </li>
                 </ul>
               </div>
-              <Link href="/" className="text-xl font-bold px-4">
+              <Link href="/" className="text-2xl font-bold px-4">
                 OpenDiary
               </Link>
             </div>
           ) : (
-            <Link href="/" className="text-xl font-bold px-4">
+            <Link href="/" className="text-2xl font-bold px-4">
               OpenDiary
             </Link>
           )}
@@ -64,17 +63,17 @@ const Navbar = (): React.ReactElement => {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal gap-2">
                 <li>
-                  <Link href="/dashboard" className="font-bold">
+                  <Link href="/dashboard" className="text-lg">
                     Create Diary
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/my-diary" className="font-bold">
+                  <Link href="/dashboard/my-diary" className="text-lg">
                     My Diary
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/my-comments" className="font-bold">
+                  <Link href="/dashboard/my-comments" className="text-lg">
                     My Comments
                   </Link>
                 </li>

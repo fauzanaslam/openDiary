@@ -8,12 +8,10 @@ import { redirect } from "next/navigation";
 export const createCommentAction = async (FormData: FormData) => {
   const content = FormData.get("content") as string;
   const diary_id = FormData.get("diary_id");
-  const comment_id = randomUUID();
+  const comment_id = diary_id;
   const created_at = new Date().toLocaleDateString();
 
   const { avatar, email, username } = await getUserData();
-
-  if (!content || !username || !email) return;
 
   const data: IComments = {
     comment_id,

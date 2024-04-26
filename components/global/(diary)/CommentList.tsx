@@ -2,12 +2,15 @@ import { IComments, supabase } from "@/utils/supabase";
 import Image from "next/image";
 import React from "react";
 import DeleteCommentButton from "../(button)/DeleteCommentButton";
+import { getUserData } from "@/utils/clerk";
 
 type ParamsProps = {
   diary_id: number;
+  user: string;
 };
 
-const CommentList = async ({ diary_id }: ParamsProps) => {
+const CommentList = async ({ diary_id, user }: ParamsProps) => {
+  const { email, username } = await getUserData();
   const { data, error } = await supabase
     .from("diary")
     .select("comments")
@@ -28,13 +31,15 @@ const CommentList = async ({ diary_id }: ParamsProps) => {
           >
             <div className="flex justify-between gap-4">
               <div className="flex gap-4">
-                <Image
-                  src={comment.avatar as string}
-                  alt={comment.avatar as string}
-                  width={50}
-                  height={50}
-                  className="rounded-full bg-primary"
-                />
+                <div>
+                  <Image
+                    src={comment.avatar as string}
+                    alt={comment.avatar as string}
+                    width={50}
+                    height={50}
+                    className="rounded-full bg-primary"
+                  />
+                </div>
                 <div>
                   <div className="flex gap-1 items-center mb-2">
                     <p className="font-bold text-lg">
@@ -45,7 +50,9 @@ const CommentList = async ({ diary_id }: ParamsProps) => {
                   <p>{comment.content}</p>
                 </div>
               </div>
-              <DeleteCommentButton diary_id={diary_id} comment_id={index} />
+              {user == email || user == username || comment.email == email ? (
+                <DeleteCommentButton diary_id={diary_id} comment_id={index} />
+              ) : null}
             </div>
           </div>
         );

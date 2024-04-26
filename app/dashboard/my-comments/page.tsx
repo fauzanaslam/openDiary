@@ -3,6 +3,7 @@ import { getUserData } from "@/utils/clerk";
 import { IComments, supabase } from "@/utils/supabase";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const page = async () => {
   const { email } = await getUserData();
@@ -31,28 +32,30 @@ const page = async () => {
         <div className="divider"></div>
         {commentsByEmails.map((comment) => {
           return (
-            <div
+            <Link
               key={comment.comment_id}
-              className="ml-4 card card-body card-bordered p-4 bg-base-200"
+              href={`/diary/${comment.comment_id}`}
             >
-              <div className="flex justify-between gap-4">
-                <div className="flex gap-4">
-                  <Image
-                    src={comment.avatar as string}
-                    alt={comment.avatar as string}
-                    width={50}
-                    height={50}
-                    className="rounded-full bg-primary"
-                  />
-                  <div>
-                    <p className="font-bold mb-2">
-                      {comment.username || comment.email}
-                    </p>
-                    <p>{comment.content}</p>
+              <div className="ml-4 card card-body card-bordered p-4 bg-base-300 hover:bg-base-200 ease-in-out duration-300">
+                <div className="flex justify-between gap-4">
+                  <div className="flex gap-4">
+                    <Image
+                      src={comment.avatar as string}
+                      alt={comment.avatar as string}
+                      width={50}
+                      height={50}
+                      className="rounded-full bg-primary"
+                    />
+                    <div>
+                      <p className="font-bold mb-2">
+                        {comment.username || comment.email}
+                      </p>
+                      <p>{comment.content}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
         <div className="divider"></div>

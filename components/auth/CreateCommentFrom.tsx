@@ -30,6 +30,7 @@ const CreateCommentFrom = ({ diary_id }: ParamsProps) => {
         placeholder="Comment here>>"
         className="h-52 p-4 text-lg border border-primary textarea"
         name="content"
+        required
       />
       <input type="hidden" value={diary_id} name="diary_id" />
       {!isSignedIn ? (

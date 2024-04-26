@@ -34,7 +34,7 @@ const page = async ({ params }: ParamsProps) => {
           ~{data.username || data.email}
         </h3>
         <p className="text-lg">{data.content}</p>
-        <CommentList diary_id={data.id} />
+        <CommentList diary_id={data.id} user={data.username || data.email} />
         <CreateCommentFrom diary_id={data.id} />
       </div>
     </Wrapper>
