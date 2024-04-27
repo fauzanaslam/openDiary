@@ -1,11 +1,8 @@
+"use server";
+
 import { IComments, supabase } from "@/utils/supabase";
 import { Redirect } from "next";
 import { redirect } from "next/navigation";
-
-type ParamsProps = {
-  comment_id: number;
-  diary_id: number;
-};
 
 export const deleteCommentAction = async (
   comment_id: number,
