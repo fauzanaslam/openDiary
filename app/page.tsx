@@ -5,7 +5,7 @@ export const revalidate = 0;
 
 export default function page(): React.ReactElement {
   return (
-    <Wrapper title="Explore DiaryY">
+    <Wrapper title="Explore Diary">
       <CardDiaries />
     </Wrapper>
   );
