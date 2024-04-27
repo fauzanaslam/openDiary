@@ -16,7 +16,7 @@ const PostContent = ({
         href={`/diary/${diary_id}`}
         className="flex flex-1 gap-2 p-5 cursor-pointer duration-300 ease-in-out hover:bg-gray-800 transition-all border-b-2 border-gray-700"
       >
-        <div className="items-center gap-4 ">
+        <div className="items-center gap-4 min-w-[50px]">
           <Image
             src={avatar as string}
             alt={avatar as string}
@@ -25,7 +25,7 @@ const PostContent = ({
             className="rounded-full bg-primary p-2"
           />
         </div>
-        <div className="max-w-[150px] md:max-w-[600px]">
+        <div>
           <p className="font-semibold text-md">{username || email}</p>
           <p className="text-sm">{content}</p>
         </div>

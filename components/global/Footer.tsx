@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="flex justify-center py-5 bg-slate-800">
+    <div className="flex justify-center py-5 bg-slate-800 mt-12">
       <div className="md:flex gap-1">
         <p className="text-center">@ OpenDiary 2024 |</p>
         <div className="flex">

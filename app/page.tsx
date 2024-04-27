@@ -1,4 +1,3 @@
-import Navbar from "@/components/global/(navbar)/Navbar";
 import Wrapper from "@/components/global/Wrapper";
 import CardDiaries from "../components/global/(diary)/CardDiaries";
 

@@ -31,7 +31,7 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
           >
             <div className="md:flex justify-between gap-4 items-center">
               <div className="flex gap-4">
-                <div>
+                <div className="min-w-[50px]">
                   <Image
                     src={comment.avatar as string}
                     alt={comment.avatar as string}
@@ -40,7 +40,7 @@ const CommentList = async ({ diary_id, user }: ParamsProps) => {
                     className="rounded-full bg-primary"
                   />
                 </div>
-                <div className="max-w-[160px] md:max-w-[550px]">
+                <div>
                   <div className="md:flex gap-1 items-center mb-2">
                     <p className="font-bold md:text-lg">
                       {comment.username || comment.email}
