@@ -28,7 +28,7 @@ const page = async ({ params }: ParamsProps) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-auto justify-center">
           <Image src={data.avatar} alt={data.avatar} width={250} height={250} />
-          <i className="text-center">posted at {posted_at}</i>
+          <i className="text-center">{posted_at}</i>
         </div>
         <h3 className="italic text-xl font-bold">
           ~{data.username || data.email}
