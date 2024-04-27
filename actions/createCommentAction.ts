@@ -2,8 +2,7 @@
 
 import { getUserData } from "@/utils/clerk";
 import { IComments, supabase } from "@/utils/supabase";
-import { randomUUID } from "crypto";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const createCommentAction = async (FormData: FormData) => {
   const content = FormData.get("content") as string;
@@ -37,5 +36,5 @@ export const createCommentAction = async (FormData: FormData) => {
     .update({ comments: newComment })
     .eq("id", diary_id);
 
-  redirect(`/diary/${diary_id}`);
+  revalidatePath(`/diary/${diary_id}`);
 };

@@ -1,13 +1,12 @@
 "use server";
 
 import { IComments, supabase } from "@/utils/supabase";
-import { Redirect } from "next";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const deleteCommentAction = async (
   comment_id: number,
   diary_id: number
-): Promise<Redirect> => {
+) => {
   const getComment = await supabase
     .from("diary")
     .select("comments")
@@ -25,5 +24,5 @@ export const deleteCommentAction = async (
     .update({ comments: existingComment })
     .eq("id", diary_id);
 
-  redirect(`/diary/${diary_id}`);
+  revalidatePath(`/diary/${diary_id}`);
 };
