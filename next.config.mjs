@@ -7,12 +7,6 @@ const nextConfig = {
       },
     ],
   },
-  redirects: [
-    {
-      source: "/dashboard",
-      destination: "/dashboard/my-diary",
-    },
-  ],
 };
 
 export default nextConfig;
