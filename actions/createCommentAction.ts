@@ -2,7 +2,6 @@
 
 import { getUserData } from "@/utils/clerk";
 import { IComments, supabase } from "@/utils/supabase";
-import { log } from "console";
 import { randomUUID } from "crypto";
 import { redirect } from "next/navigation";
 
@@ -38,8 +37,5 @@ export const createCommentAction = async (FormData: FormData) => {
     .update({ comments: newComment })
     .eq("id", diary_id);
 
-  const status = getComment.status;
-  console.log("🚀 ~ createCommentAction ~ status:", status);
-
-  if (status == 200) redirect(`/diary/${diary_id}`);
+  redirect(`/diary/${diary_id}`);
 };
