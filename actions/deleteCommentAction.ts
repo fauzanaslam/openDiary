@@ -1,5 +1,3 @@
-"use server";
-
 import { IComments, supabase } from "@/utils/supabase";
 import { Redirect } from "next";
 import { redirect } from "next/navigation";

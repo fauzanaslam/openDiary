@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { getUserData } from "@/utils/clerk";
 import { supabase, IDiary } from "@/utils/supabase";
-import { Redirect } from "next";
 
 export const createDiaryAction = async (formData: FormData): Promise<void> => {
   const content = formData.get("content") as string;
