@@ -30,12 +30,9 @@ const page = async () => {
     >
       <div className="flex flex-col gap-4">
         <div className="divider"></div>
-        {commentsByEmails.map((comment) => {
+        {commentsByEmails.map((comment, index) => {
           return (
-            <Link
-              key={comment.comment_id}
-              href={`/diary/${comment.comment_id}`}
-            >
+            <Link key={index} href={`/diary/${comment.comment_id}`}>
               <div className="mx-4 card card-body card-bordered bg-base-300 hover:bg-base-200 ease-in-out duration-300">
                 <div className="flex justify-between gap-4">
                   <div className="flex gap-4">
