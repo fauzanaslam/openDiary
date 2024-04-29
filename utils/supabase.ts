@@ -8,7 +8,7 @@ export const supabase = createClient(
 export interface IDiary {
   diary_id?: number;
   content: string;
-  diary_image: string | undefined;
+  diary_image?: string | undefined;
   email: string | undefined;
   username?: string | null;
   avatar: string | undefined;
