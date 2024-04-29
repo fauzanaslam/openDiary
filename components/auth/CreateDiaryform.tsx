@@ -16,7 +16,7 @@ const CreateDiaryform = (): React.ReactElement => {
         maxLength={50}
       />
       <button className="btn btn-primary" type="submit">
-        Create Now
+        Create now
       </button>
     </form>
   );
