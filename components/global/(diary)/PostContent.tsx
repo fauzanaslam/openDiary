@@ -9,6 +9,7 @@ const PostContent = ({
   content,
   username,
   email,
+  diary_image,
 }: IDiary): React.ReactElement => {
   return (
     <div className="flex justify-between items-center flex-1">
@@ -28,6 +29,15 @@ const PostContent = ({
         <div>
           <p className="font-semibold text-md">{username || email}</p>
           <p className="text-sm">{content}</p>
+          {diary_image && (
+            <Image
+              src={diary_image as string}
+              alt={diary_image as string}
+              width={400}
+              height={200}
+              className=" p-2"
+            />
+          )}
         </div>
       </Link>
     </div>

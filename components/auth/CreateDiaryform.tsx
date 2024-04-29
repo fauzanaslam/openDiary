@@ -7,6 +7,7 @@ const CreateDiaryform = (): React.ReactElement => {
       action={createDiaryAction}
       className="flex flex-col gap-4 max-w-xl mx-auto"
     >
+      <input type="file" name="image" />
       <textarea
         placeholder="isi diary kamu disini"
         className="h-52 p-4 text-lg border border-primary textarea"
