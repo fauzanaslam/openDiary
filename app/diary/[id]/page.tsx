@@ -25,7 +25,6 @@ const page = async ({ params }: ParamsProps) => {
     .order("created_at", { ascending: false })
     .eq("id", params.id)
     .single();
-  console.log("🚀 ~ page ~ imageData:", imageData);
 
   const posted_at = new Date(data.created_at).toLocaleDateString();
 
@@ -35,12 +34,21 @@ const page = async ({ params }: ParamsProps) => {
     <Wrapper>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-auto justify-center">
-          <Image
-            src={imageData?.diary_image}
-            alt={data.avatar}
-            width={400}
-            height={200}
-          />
+          {imageData?.diary_image !== null ? (
+            <Image
+              src={imageData?.diary_image}
+              alt={data.avatar}
+              width={400}
+              height={200}
+            />
+          ) : (
+            <Image
+              src={data.avatar}
+              alt={data.avatar}
+              width={400}
+              height={200}
+            />
+          )}
           <i className="text-center">{posted_at}</i>
         </div>
         <h3 className="italic text-xl font-bold">
