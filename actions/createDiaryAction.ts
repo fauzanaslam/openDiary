@@ -23,7 +23,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     .from("images")
     .getPublicUrl(fileName);
 
-  let diary_image: any = imageUrl.publicUrl;
+  let diary_image: string | null = imageUrl.publicUrl;
   if (image.name == "undefined") {
     diary_image = null;
   }
