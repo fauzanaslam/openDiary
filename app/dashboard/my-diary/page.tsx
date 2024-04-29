@@ -34,6 +34,7 @@ const page = async (): Promise<React.ReactElement> => {
                 content={diary.content}
                 email={diary.email}
                 username={diary.username}
+                diary_image={diary.diary_image}
               />
               <Buttondelete diary_id={diary.id} />
             </div>
