@@ -17,5 +17,5 @@ export interface IDiary {
 }
 
 export interface IComments extends IDiary {
-  comment_id: number;
+  comment_id: any;
 }
