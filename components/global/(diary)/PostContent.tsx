@@ -15,7 +15,7 @@ const PostContent = ({
     <div className="flex justify-between items-center flex-1">
       <Link
         href={`/diary/${diary_id}`}
-        className="flex flex-1 gap-2 p-5 cursor-pointer duration-300 ease-in-out hover:bg-gray-800 transition-all border-b-2 border-gray-700"
+        className="flex flex-1 gap-2 p-5 cursor-pointer duration-300 ease-in-out hover:bg-gray-800 transition-all"
       >
         <div className="items-center gap-4 min-w-[50px]">
           <Image

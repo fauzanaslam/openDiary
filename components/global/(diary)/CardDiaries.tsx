@@ -1,6 +1,7 @@
 import React from "react";
 import PostContent from "./PostContent";
 import { supabase } from "@/utils/supabase";
+import LikesButton from "../(button)/LikesButton";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
   const { data, error } = await supabase
@@ -13,7 +14,7 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
     <div>
       {data.map((diary) => {
         return (
-          <div key={diary.id}>
+          <div key={diary.id} className=" border-b-2 border-gray-700">
             <PostContent
               key={diary.id}
               diary_id={diary.id}
@@ -23,6 +24,8 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
               username={diary.username}
               diary_image={diary.diary_image}
             />
+            <div className="ml-20 mb-2"></div>
+            <LikesButton diary={diary} />
           </div>
         );
       })}
