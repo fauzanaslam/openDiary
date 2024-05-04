@@ -1,32 +1,41 @@
 "use client";
 
 import { supabase } from "@/utils/supabase";
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import React from "react";
 
-const LikesButton = ({ diary }: any) => {
+const LikesButton = ({ email, diary }: any) => {
   const router = useRouter();
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useAuth();
   const handleLike = async () => {
     if (isSignedIn) {
-      if (diary.likes.length != 0) {
-        const data: any = [];
-        await supabase.from("diary").update({ likes: data }).eq("id", diary.id);
-        router.refresh();
+      const getLikes = await supabase
+        .from("diary")
+        .select("likes")
+        .eq("id", diary.id)
+        .single();
+
+      const existingLike = getLikes.data?.likes || [];
+
+      let newLikes;
+
+      if (existingLike.includes(email)) {
+        newLikes = existingLike.filter((item: string) => item !== email);
       } else {
-        const newLikes = [user];
-        await supabase
-          .from("diary")
-          .update({ likes: newLikes })
-          .eq("id", diary.id);
-        router.refresh();
+        newLikes = [...existingLike, email];
       }
+
+      await supabase
+        .from("diary")
+        .update({ likes: newLikes })
+        .eq("id", diary.id);
+      router.refresh();
     }
   };
-
   return (
     <div>
-      <button onClick={handleLike}>Like {diary.likes.length}</button>
+      <button onClick={handleLike}>Likes {diary.likes.length}</button>
     </div>
   );
 };

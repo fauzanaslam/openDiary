@@ -2,8 +2,10 @@ import React from "react";
 import PostContent from "./PostContent";
 import { supabase } from "@/utils/supabase";
 import LikesButton from "../(button)/LikesButton";
+import { getUserData } from "@/utils/clerk";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
+  const { email } = await getUserData();
   const { data, error } = await supabase
     .from("diary")
     .select()
@@ -24,8 +26,9 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
               username={diary.username}
               diary_image={diary.diary_image}
             />
-            <div className="ml-20 mb-2"></div>
-            <LikesButton diary={diary} />
+            <div className="ml-20 mb-2">
+              <LikesButton email={email} diary={diary} />
+            </div>
           </div>
         );
       })}
