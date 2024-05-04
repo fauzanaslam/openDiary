@@ -16,7 +16,7 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
     <div>
       {data.map((diary) => {
         return (
-          <div key={diary.id} className=" border-b-2 border-gray-700">
+          <div key={diary.id} className="relative border-b-2 border-gray-700">
             <PostContent
               key={diary.id}
               diary_id={diary.id}
@@ -26,7 +26,7 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
               username={diary.username}
               diary_image={diary.diary_image}
             />
-            <div className="ml-20 mb-2">
+            <div className="absolute ml-20 mb-2 -bottom-2">
               <LikesButton email={email} diary={diary} />
             </div>
           </div>

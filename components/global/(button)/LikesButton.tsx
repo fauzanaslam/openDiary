@@ -3,9 +3,12 @@
 import { supabase } from "@/utils/supabase";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const LikesButton = ({ email, diary }: any) => {
+  const [liked, setLiked] = useState(false);
   const router = useRouter();
   const { isSignedIn } = useAuth();
   const handleLike = async () => {
@@ -22,8 +25,10 @@ const LikesButton = ({ email, diary }: any) => {
 
       if (existingLike.includes(email)) {
         newLikes = existingLike.filter((item: string) => item !== email);
+        setLiked(false);
       } else {
         newLikes = [...existingLike, email];
+        setLiked(true);
       }
 
       await supabase
@@ -35,7 +40,10 @@ const LikesButton = ({ email, diary }: any) => {
   };
   return (
     <div>
-      <button onClick={handleLike}>Likes {diary.likes.length}</button>
+      <button onClick={handleLike} className="flex items-center gap-1">
+        {liked ? <FaHeart /> : <FaRegHeart />}
+        {diary.likes.length}
+      </button>
     </div>
   );
 };
