@@ -25,7 +25,7 @@ const page = async () => {
   return (
     <Wrapper
       title={
-        commentsByEmails.length > 0 ? "All Comments" : "Comment not available"
+        commentsByEmails.length > 0 ? "All comments" : "Comment not available"
       }
     >
       <div className="flex flex-col gap-4">

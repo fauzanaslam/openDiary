@@ -11,6 +11,7 @@ const LikesButton = ({ email, diary }: any) => {
   const [liked, setLiked] = useState(false);
   const router = useRouter();
   const { isSignedIn } = useAuth();
+
   const handleLike = async () => {
     if (isSignedIn) {
       const getLikes = await supabase
@@ -38,6 +39,7 @@ const LikesButton = ({ email, diary }: any) => {
       router.refresh();
     }
   };
+
   return (
     <div>
       <button onClick={handleLike} className="flex items-center gap-1">
