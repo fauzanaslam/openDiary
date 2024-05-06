@@ -25,6 +25,7 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
               email={diary.email}
               username={diary.username}
               diary_image={diary.diary_image}
+              created_at={diary.created_at}
             />
             <div className="absolute ml-20 mb-2 -bottom-2">
               <LikesButton email={email} diary={diary} />

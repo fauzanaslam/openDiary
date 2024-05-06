@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^5.0.1",
     "@flaticon/flaticon-uicons": "^3.2.1",
     "@supabase/supabase-js": "^2.42.5",
+    "date-fns": "^3.6.0",
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",

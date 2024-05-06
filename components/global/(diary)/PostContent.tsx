@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { IDiary } from "@/utils/supabase";
 import Link from "next/link";
+import GetPastTime from "../GetPastTime";
 
 const PostContent = ({
   diary_id,
@@ -10,6 +11,7 @@ const PostContent = ({
   username,
   email,
   diary_image,
+  created_at,
 }: IDiary): React.ReactElement => {
   return (
     <div className="flex justify-between items-center flex-1">
@@ -27,8 +29,11 @@ const PostContent = ({
           />
         </div>
         <div>
-          <p className="font-semibold text-md">{username || email}</p>
-          <p className="text-sm">{content}</p>
+          <div className="flex gap-2 items-center">
+            <p className="font-semibold text-md">{username || email}</p>
+            <GetPastTime past_time={created_at} />
+          </div>
+          <p className="text-md">{content}</p>
           {diary_image && (
             <Image
               src={diary_image as string}
