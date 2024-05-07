@@ -6,7 +6,6 @@ import React from "react";
 
 const GetPastTime = ({ past_time }: any) => {
   const pastTime = formatDistanceToNow(past_time, {
-    addSuffix: true,
     locale: id,
   });
   return (

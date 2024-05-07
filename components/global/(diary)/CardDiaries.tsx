@@ -3,6 +3,9 @@ import PostContent from "./PostContent";
 import { supabase } from "@/utils/supabase";
 import LikesButton from "../(button)/LikesButton";
 import { getUserData } from "@/utils/clerk";
+import { WhatsappShareButton, WhatsappIcon } from "next-share";
+import ShareButton from "../(button)/ShareButton";
+import { id } from "date-fns/locale";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -27,8 +30,9 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
               diary_image={diary.diary_image}
               created_at={diary.created_at}
             />
-            <div className="absolute ml-20 mb-2 -bottom-2">
+            <div className="flex items-center absolute ml-20 mb-2 -bottom-2 gap-2">
               <LikesButton email={email} diary={diary} />
+              <ShareButton diary_id={diary.id} />
             </div>
           </div>
         );

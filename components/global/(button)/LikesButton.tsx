@@ -44,7 +44,9 @@ const LikesButton = ({ email, diary }: any) => {
     <div>
       <button onClick={handleLike} className="flex items-center gap-1">
         {liked ? <FaHeart /> : <FaRegHeart />}
-        {diary.likes.length}
+        <p className="text-sm">
+          {diary.likes.length !== 0 && diary.likes.length}
+        </p>
       </button>
     </div>
   );
