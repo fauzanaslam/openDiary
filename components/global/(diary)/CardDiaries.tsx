@@ -33,7 +33,7 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
                 created_at={diary.created_at}
               />
             </div>
-            <div className="flex items-center absolute ml-20 mb-2 -bottom-2 gap-2">
+            <div className="flex items-center absolute ml-20 mb-3 -bottom-2 gap-2">
               <LikesButton email={email} diary={diary} />
               <ShareButton diary_id={diary.id} />
               <ScreenshootButton elementId={diary.id} />
