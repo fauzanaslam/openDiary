@@ -6,6 +6,7 @@ import { getUserData } from "@/utils/clerk";
 import { WhatsappShareButton, WhatsappIcon } from "next-share";
 import ShareButton from "../(button)/ShareButton";
 import { id } from "date-fns/locale";
+import ScreenshootButton from "../(button)/ScreenshootButton";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -20,19 +21,22 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
       {data.map((diary) => {
         return (
           <div key={diary.id} className="relative border-b-2 border-gray-700">
-            <PostContent
-              key={diary.id}
-              diary_id={diary.id}
-              avatar={diary.avatar}
-              content={diary.content}
-              email={diary.email}
-              username={diary.username}
-              diary_image={diary.diary_image}
-              created_at={diary.created_at}
-            />
+            <div id={diary.id}>
+              <PostContent
+                key={diary.id}
+                diary_id={diary.id}
+                avatar={diary.avatar}
+                content={diary.content}
+                email={diary.email}
+                username={diary.username}
+                diary_image={diary.diary_image}
+                created_at={diary.created_at}
+              />
+            </div>
             <div className="flex items-center absolute ml-20 mb-2 -bottom-2 gap-2">
               <LikesButton email={email} diary={diary} />
               <ShareButton diary_id={diary.id} />
+              <ScreenshootButton elementId={diary.id} />
             </div>
           </div>
         );

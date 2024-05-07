@@ -13,6 +13,8 @@
     "@flaticon/flaticon-uicons": "^3.2.1",
     "@supabase/supabase-js": "^2.42.5",
     "date-fns": "^3.6.0",
+    "html2canvas": "^1.4.1",
+    "html2canvas-pro": "^1.4.3",
     "next": "14.2.2",
     "next-share": "^0.27.0",
     "react": "^18",
