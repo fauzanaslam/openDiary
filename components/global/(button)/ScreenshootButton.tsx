@@ -4,7 +4,11 @@ import React from "react";
 import html2canvas from "html2canvas-pro";
 import { TbCapture } from "react-icons/tb";
 
-const ScreenshotButton = ({ elementId }: { elementId: string }) => {
+type ParamsProps = {
+  elementId: string;
+};
+
+const ScreenshotButton = ({ elementId }: ParamsProps) => {
   const handleScreenshot = () => {
     const element = document.getElementById(elementId);
     if (!element) {

@@ -28,9 +28,26 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     diary_image = null;
   }
 
-  const data1: IDiary = { content, email, username, avatar, diary_image };
+  const diaryData: IDiary = { content, email, username, avatar, diary_image };
+  await supabase.from("diary").insert(diaryData);
 
-  await supabase.from("diary").insert(data1);
+  // const existingUserData = await supabase
+  //   .from("user")
+  //   .select("*")
+  //   .eq("email", email);
+  // console.log("Existing user data:", existingUserData.data);
+  // if (existingUserData.data && existingUserData.data.length === 0) {
+  //   console.log("User not found, inserting new user data...");
+  //   const userData = { email, content: [content] };
+  //   await supabase.from("user").insert(userData);
+  // } else if (existingUserData.data && existingUserData.data.length > 0) {
+  //   console.log("User found, updating user data...");
+  //   const updatedContent = [...existingUserData.data[0].content, content];
+  //   await supabase
+  //     .from("user")
+  //     .update({ content: updatedContent })
+  //     .eq("email", email);
+  // }
 
   redirect("/dashboard/my-diary");
 };
