@@ -10,7 +10,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
   const { avatar, email, username } = await getUserData();
   const image: File = formData.get("image") as File;
   const fileName = `${randomUUID()}-${image.name}`;
-  // const userContentId = randomUUID();
+  const randomID = randomUUID();
   if (image.size !== 0) {
     const { data, error } = await supabase.storage
       .from("images")
@@ -29,7 +29,14 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     diary_image = null;
   }
 
-  const diaryData: IDiary = { content, email, username, avatar, diary_image };
+  const diaryData: IDiary = {
+    content,
+    email,
+    username,
+    avatar,
+    diary_image,
+    randomID,
+  };
   await supabase.from("diary").insert(diaryData);
 
   const existingUserData = await supabase
@@ -37,17 +44,17 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     .select("*")
     .eq("email", email);
 
-  // const userContent = {
-  //   userContentId,
-  //   content,
-  //   diary_image,
-  // };
+  const userContent = {
+    randomID,
+    content,
+    diary_image,
+  };
 
   if (existingUserData.data && existingUserData.data.length === 0) {
-    const userData = { email, content: [content] };
+    const userData = { email, content: [userContent] };
     await supabase.from("user").insert(userData);
   } else if (existingUserData.data && existingUserData.data.length > 0) {
-    const updatedContent = [...existingUserData.data[0].content, content];
+    const updatedContent = [...existingUserData.data[0].content, userContent];
     await supabase
       .from("user")
       .update({ content: updatedContent })

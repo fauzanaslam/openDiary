@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { UUID } from "crypto";
 
 export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -14,6 +15,7 @@ export interface IDiary {
   avatar: string | undefined;
   created_at?: string;
   comments?: Array<IComments>;
+  randomID?: UUID;
 }
 
 export interface IComments extends IDiary {
