@@ -3,9 +3,7 @@ import PostContent from "./PostContent";
 import { supabase } from "@/utils/supabase";
 import LikesButton from "../(button)/LikesButton";
 import { getUserData } from "@/utils/clerk";
-import { WhatsappShareButton, WhatsappIcon } from "next-share";
 import ShareButton from "../(button)/ShareButton";
-import { id } from "date-fns/locale";
 import ScreenshootButton from "../(button)/ScreenshootButton";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
