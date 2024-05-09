@@ -51,7 +51,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
   };
 
   if (existingUserData.data && existingUserData.data.length === 0) {
-    const userData = { email, content: [userContent] };
+    const userData = { email, avatar, content: [userContent] };
     await supabase.from("user").insert(userData);
   } else if (existingUserData.data && existingUserData.data.length > 0) {
     const updatedContent = [...existingUserData.data[0].content, userContent];

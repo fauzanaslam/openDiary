@@ -5,6 +5,8 @@ import LikesButton from "../(button)/LikesButton";
 import { getUserData } from "@/utils/clerk";
 import ShareButton from "../(button)/ShareButton";
 import ScreenshootButton from "../(button)/ScreenshootButton";
+import { CgComment } from "react-icons/cg";
+import Link from "next/link";
 
 const CardDiaries = async (): Promise<React.ReactElement> => {
   const { email } = await getUserData();
@@ -34,6 +36,9 @@ const CardDiaries = async (): Promise<React.ReactElement> => {
             <div className="flex items-center absolute ml-20 mb-3 -bottom-2 gap-2">
               <LikesButton email={email} diary={diary} />
               <ShareButton diary_id={diary.id} />
+              <Link href={`/diary/${diary.id}`}>
+                <CgComment />
+              </Link>
               <ScreenshootButton elementId={diary.id} />
             </div>
           </div>
