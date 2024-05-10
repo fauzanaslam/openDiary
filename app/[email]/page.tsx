@@ -2,6 +2,7 @@ import Wrapper from "@/components/global/Wrapper";
 import { supabase } from "@/utils/supabase";
 import React from "react";
 import Image from "next/image";
+import UserContent from "@/components/global/(diary)/UserContent";
 
 export const revalidate = 0;
 
@@ -44,7 +45,7 @@ const page = async ({ params }: ParamsProps) => {
               <div className="flex-1">
                 <div className="flex justify-center items-center h-44 bg">
                   <div className="gap-2">
-                    <p className="text-2xl text-center">0</p>
+                    {/* <p className="text-2xl text-center">0</p> */}
                     <p className="text-2xl">Followers</p>
                   </div>
                 </div>
@@ -52,7 +53,7 @@ const page = async ({ params }: ParamsProps) => {
               <div className="flex-1">
                 <div className="flex justify-center items-center h-44 bg">
                   <div className="gap-2">
-                    <p className="text-2xl text-center">0</p>
+                    {/* <p className="text-2xl text-center">0</p> */}
                     <p className="text-2xl">Following</p>
                   </div>
                 </div>
@@ -61,6 +62,7 @@ const page = async ({ params }: ParamsProps) => {
           </div>
         </div>
         <hr />
+        <UserContent email={data.email} />
       </div>
     </Wrapper>
   );

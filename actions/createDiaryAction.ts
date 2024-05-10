@@ -11,6 +11,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
   const image: File = formData.get("image") as File;
   const fileName = `${randomUUID()}-${image.name}`;
   const randomID = randomUUID();
+  const created_at = new Date();
   if (image.size !== 0) {
     const { data, error } = await supabase.storage
       .from("images")
@@ -48,6 +49,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     randomID,
     content,
     diary_image,
+    created_at,
   };
 
   if (existingUserData.data && existingUserData.data.length === 0) {
