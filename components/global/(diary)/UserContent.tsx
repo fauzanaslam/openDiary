@@ -39,7 +39,7 @@ const CommentList = async ({ email }: ParamsProps) => {
                 </div>
                 <div>
                   <div className="md:flex items-center mb-2">
-                    <p className="font-bold md:text-lg max-w-prose">{email}</p>
+                    <p className="font-bold md:text-lg">{email}</p>
                     <GetPastTime past_time={content.created_at} />
                   </div>
                   <p>{content.content}</p>
