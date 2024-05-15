@@ -32,8 +32,8 @@ const CommentList = async ({ email }: ParamsProps) => {
                   <Image
                     src={data.avatar as string}
                     alt={data.avatar as string}
-                    width={50}
-                    height={50}
+                    width={45}
+                    height={45}
                     className="rounded-full bg-primary"
                   />
                 </div>
@@ -47,8 +47,8 @@ const CommentList = async ({ email }: ParamsProps) => {
                     <Image
                       src={content.diary_image as string}
                       alt={content.diary_image as string}
-                      width={400}
-                      height={200}
+                      width={150}
+                      height={100}
                       className=" p-2"
                     />
                   )}
