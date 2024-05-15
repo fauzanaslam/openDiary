@@ -38,7 +38,7 @@ const page = async ({ params }: ParamsProps) => {
                     <p className="text-2xl text-center">
                       {data.content.length}
                     </p>
-                    <p className="text-2xl">Diary</p>
+                    <p className="md:text-2xl">Diary</p>
                   </div>
                 </div>
               </div>
@@ -46,15 +46,15 @@ const page = async ({ params }: ParamsProps) => {
                 <div className="flex justify-center items-center h-44 bg">
                   <div className="gap-2">
                     <p className="text-2xl text-center">0</p>
-                    <p className="text-2xl">Followers</p>
+                    <p className="md:text-2xl">Followers</p>
                   </div>
                 </div>
               </div>
               <div className="flex-1">
                 <div className="flex justify-center items-center h-44 bg">
                   <div className="gap-2">
-                    {/* <p className="text-2xl text-center">0</p> */}
-                    <p className="text-2xl">Following</p>
+                    <p className="text-2xl text-center">0</p>
+                    <p className="md:text-2xl">Following</p>
                   </div>
                 </div>
               </div>
