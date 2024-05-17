@@ -12,7 +12,7 @@ const Footer = () => {
               FauzanAslam
             </p>
           </Link>
-          X mang Dea & OpenDiary Dev Team. All rights reversed
+           X mang Dea & OpenDiary Dev Team. All rights reversed
           <p>.</p>
         </div>
       </div>
