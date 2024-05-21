@@ -6,6 +6,7 @@ import Image from "next/image";
 
 const CreateDiaryform = (): React.ReactElement => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const validateImageType = (file: File): boolean => {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -27,9 +28,22 @@ const CreateDiaryform = (): React.ReactElement => {
     }
   };
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    const formData = new FormData(event.currentTarget);
+    try {
+      await createDiaryAction(formData);
+    } catch (error) {
+      console.error("Error creating diary:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <form
-      action={createDiaryAction}
+      onSubmit={handleSubmit}
       className="flex flex-col gap-4 max-w-xl mx-auto"
     >
       <div className="flex gap-5 items-center">
@@ -53,8 +67,8 @@ const CreateDiaryform = (): React.ReactElement => {
         name="content"
         required
       />
-      <button className="btn btn-primary" type="submit">
-        Create now
+      <button className="btn btn-primary" type="submit" disabled={loading}>
+        {loading ? "Creating..." : "Create now"}
       </button>
     </form>
   );
