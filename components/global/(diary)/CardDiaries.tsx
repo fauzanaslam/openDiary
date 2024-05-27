@@ -27,7 +27,6 @@ const CardDiaries = (): React.ReactElement => {
           .from("diary")
           .select()
           .order("created_at", { ascending: false });
-        console.log("🚀 ~ fetchDiaries ~ data:", data);
 
         if (error) throw error;
         setDiaries(data || []);
