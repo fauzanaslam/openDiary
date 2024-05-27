@@ -4,6 +4,7 @@ import { supabase } from "@/utils/supabase";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import Image from "next/image";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -13,7 +14,7 @@ const Search = () => {
 
   useEffect(() => {
     const fetchEmails = async () => {
-      const { data, error }: any = await supabase.from("user").select("email");
+      const { data, error }: any = await supabase.from("user").select("*");
       if (error) {
         console.error("Error fetching emails:", error);
       } else {
@@ -57,7 +58,7 @@ const Search = () => {
         />
         <IoSearch size={24} className="absolute top-2 left-3 text-gray-500" />
       </div>
-      <div className="flex flex-col w-1/3 mx-auto bg-white items-center">
+      <div className="flex flex-col w-1/3 mx-auto bg-black text-gray-500 items-center overflow-hidden">
         {debouncedQuery && filteredEmails.length === 0 && (
           <div className="py-2 px-4 w-full text-center">User not found</div>
         )}
@@ -66,9 +67,16 @@ const Search = () => {
             <Link
               href={user.email}
               key={index}
-              className="py-2 px-4 border-b w-full"
+              className="py-2 px-4 border-b w-full flex gap-2"
             >
-              {user.email}
+              <Image
+                src={user.avatar}
+                alt={user.email}
+                width={25}
+                height={25}
+                className="bg-primary rounded-full p-1"
+              />
+              <p className="">{user.email}</p>
             </Link>
           ))}
       </div>
