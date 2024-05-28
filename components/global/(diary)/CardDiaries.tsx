@@ -26,7 +26,10 @@ const CardDiaries = (): React.ReactElement => {
         // if (userData.email) {
         //   setEmail(userData.email);
         // }
-        let query = supabase.from("diary").select("*");
+        let query = supabase
+          .from("diary")
+          .select("*")
+          .order("created_at", { ascending: false });
         if (selectedTopics.length > 0) {
           query = query.contains("topics", selectedTopics);
         }
