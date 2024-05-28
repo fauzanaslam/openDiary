@@ -13,7 +13,6 @@ const Wrapper = ({ title, children }: ParamsProps): ReactElement => {
         <h1 className="text-center text-xl mb-8">{title}</h1>
         {children}
       </section>
-      <Footer />
     </div>
   );
 };

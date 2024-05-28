@@ -8,9 +8,7 @@ export default function page(): React.ReactElement {
   return (
     <>
       <Search />
-      <Wrapper title="Explore Diary">
-        <CardDiaries />
-      </Wrapper>
+      <CardDiaries />
     </>
   );
 }

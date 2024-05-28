@@ -4,8 +4,20 @@ import { createDiaryAction } from "@/actions/createDiaryAction";
 import React, { useState } from "react";
 import Image from "next/image";
 
+const topicDiarys = [
+  "School",
+  "College",
+  "Math",
+  "Programming",
+  "Work",
+  "Politics",
+  "Business",
+  "Holiday",
+];
+
 const CreateDiaryform = (): React.ReactElement => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
   const validateImageType = (file: File): boolean => {
@@ -28,10 +40,20 @@ const CreateDiaryform = (): React.ReactElement => {
     }
   };
 
+  const handleTopicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const topic = event.target.value;
+    setSelectedTopics((prevSelectedTopics) =>
+      prevSelectedTopics.includes(topic)
+        ? prevSelectedTopics.filter((t) => t !== topic)
+        : [...prevSelectedTopics, topic]
+    );
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     const formData = new FormData(event.currentTarget);
+    formData.append("topics", JSON.stringify(selectedTopics));
     try {
       await createDiaryAction(formData);
     } catch (error) {
@@ -67,6 +89,23 @@ const CreateDiaryform = (): React.ReactElement => {
         name="content"
         required
       />
+      <div>
+        <p className="block mb-2">Pilih Topik:</p>
+        <div className="flex flex-wrap gap-2">
+          {topicDiarys.map((topic, index) => (
+            <label key={index} className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                value={topic}
+                checked={selectedTopics.includes(topic)}
+                onChange={handleTopicChange}
+                className="checkbox checkbox-primary"
+              />
+              <span className="text-white">{topic}</span>
+            </label>
+          ))}
+        </div>
+      </div>
       <button className="btn btn-primary" type="submit" disabled={loading}>
         {loading ? "Creating..." : "Create now"}
       </button>

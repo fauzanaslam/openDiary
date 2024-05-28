@@ -7,11 +7,14 @@ import { randomUUID } from "crypto";
 
 export const createDiaryAction = async (formData: FormData): Promise<void> => {
   const content = formData.get("content") as string;
+  const topics = JSON.parse(formData.get("topics") as string) as string[]; // Retrieve and parse the topics as an array
+  console.log("🚀 ~ createDiaryAction ~ topic:", topics);
   const { avatar, email, username } = await getUserData();
   const image: File = formData.get("image") as File;
   const fileName = `${randomUUID()}-${image.name}`;
   const randomID = randomUUID();
   const created_at = new Date();
+
   if (image.size !== 0) {
     const { data, error } = await supabase.storage
       .from("images")
@@ -26,7 +29,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     .getPublicUrl(fileName);
 
   let diary_image: string | null = imageUrl.publicUrl;
-  if (image.name == "undefined") {
+  if (image.name === "undefined") {
     diary_image = null;
   }
 
@@ -37,6 +40,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     avatar,
     diary_image,
     randomID,
+    topics, // Include the topic in the diary data
   };
   await supabase.from("diary").insert(diaryData);
 
@@ -50,6 +54,7 @@ export const createDiaryAction = async (formData: FormData): Promise<void> => {
     content,
     diary_image,
     created_at,
+    topics, // Include the topic in the user content
   };
 
   if (existingUserData.data && existingUserData.data.length === 0) {

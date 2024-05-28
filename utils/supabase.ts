@@ -16,6 +16,7 @@ export interface IDiary {
   created_at?: string;
   comments?: Array<IComments>;
   randomID?: UUID;
+  topics?: string[];
 }
 
 export interface IComments extends IDiary {
