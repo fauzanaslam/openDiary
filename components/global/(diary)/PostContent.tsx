@@ -44,7 +44,7 @@ const PostContent = ({
             className=" p-2"
           />
         )}
-        <div className="flex gap-1 my-1">
+        <div className="flex flex-wrap gap-1 my-1">
           {topics?.map((topic, index) => (
             <p key={index} className=" px-3 rounded-full bg-gray-700 text-sm">
               {topic}
