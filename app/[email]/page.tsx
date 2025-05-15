@@ -18,9 +18,9 @@ const page = async ({ params }: ParamsProps) => {
   const { data, error } = await supabase
     .from("user")
     .select()
-    .order("created_at", { ascending: false })
+    // .order("created_at", { ascending: false })
     .eq("email", decodedEmail)
-    .single();
+    .maybeSingle();
 
   return (
     <Wrapper>

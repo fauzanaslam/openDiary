@@ -3,6 +3,7 @@ import Image from "next/image";
 import { IDiary } from "@/utils/supabase";
 import Link from "next/link";
 import GetPastTime from "../GetPastTime";
+import { id } from 'date-fns/locale';
 
 const PostContent = ({
   diary_id,
@@ -44,7 +45,7 @@ const PostContent = ({
             className=" p-2"
           />
         )}
-        <div className="flex flex-wrap gap-1 my-1">
+        <div className="flex flex-wrap gap-1 my-1" id="topics">
           {topics?.map((topic, index) => (
             <p key={index} className=" px-3 rounded-full bg-gray-700 text-sm">
               {topic}

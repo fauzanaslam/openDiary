@@ -11,9 +11,14 @@ type ParamsProps = {
 const ScreenshotButton = ({ elementId }: ParamsProps) => {
   const handleScreenshot = () => {
     const element = document.getElementById(elementId);
+    const topicsElement = element?.querySelector("#topics");
     if (!element) {
       console.error(`Element with id ${elementId} not found.`);
       return;
+    }
+
+    if (topicsElement) {
+      (topicsElement as HTMLElement).style.display = "none";
     }
 
     html2canvas(element)
@@ -28,6 +33,12 @@ const ScreenshotButton = ({ elementId }: ParamsProps) => {
         a.setAttribute("href", image);
         a.click();
         canvas.remove();
+      })
+      .finally(() => {
+        // Tampilkan kembali topics
+        if (topicsElement) {
+          (topicsElement as HTMLElement).style.display = "";
+        }
       });
   };
 

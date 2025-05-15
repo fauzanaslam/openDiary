@@ -6,7 +6,7 @@ const nextConfig = {
         hostname: "img.clerk.com",
       },
       {
-        hostname: "agtllqrhusmbrohdpvql.supabase.co",
+        hostname: "gyeiivlneryidobzspsx.supabase.co",
       },
     ],
   },
